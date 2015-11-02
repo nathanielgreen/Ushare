@@ -6,13 +6,17 @@ gem 'rake'
 gem 'rails-api'
 gem 'json'
 
+
 gem 'spring', :group => :development
-gem 'rack-test'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pg'
 
 group :test do
+  gem 'rack-test'
   gem 'rspec-rails'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'rspec-collection_matchers'
 end
 
 
