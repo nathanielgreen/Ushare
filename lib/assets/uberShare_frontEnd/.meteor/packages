@@ -22,3 +22,4 @@ sanjo:jasmine
 velocity:html-reporter
 twbs:bootstrap
 angular
+angular:angular-mocks
