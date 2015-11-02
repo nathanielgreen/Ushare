@@ -20,3 +20,5 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 sanjo:jasmine
 velocity:html-reporter
+twbs:bootstrap
+angular
