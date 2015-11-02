@@ -23,3 +23,5 @@ velocity:html-reporter
 twbs:bootstrap
 angular
 angular:angular-mocks
+angularui:angular-ui-router
+urigo:angular-ui-router
