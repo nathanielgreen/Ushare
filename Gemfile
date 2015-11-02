@@ -2,18 +2,27 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.4'
-
+gem 'rake'
 gem 'rails-api'
+gem 'json'
+
 
 gem 'spring', :group => :development
-
-
+gem 'rack-cors', :require => 'rack/cors'
 gem 'pg'
+
+group :test do
+  gem 'rack-test'
+  gem 'rspec-rails'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'rspec-collection_matchers'
+end
 
 
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
