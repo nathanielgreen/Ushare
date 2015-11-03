@@ -40,8 +40,9 @@ describe "Users" do
     end
 
     context 'delete request to /users' do
-      it 'with valide authorisation key deletes the user\'s record' do 
-
+      it 'with valide authorisation key deletes the user\'s record' do
+        sign_up
+      
       end
     end
 
