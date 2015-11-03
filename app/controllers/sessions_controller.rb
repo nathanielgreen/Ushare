@@ -15,7 +15,12 @@ class SessionsController < ApplicationController
   def destroy
     hash = JSON.parse(request.body.read)
     session = Session.find_by_auth_key(hash['auth_key'])
-    session.destroy
+    if session
+      session.destroy
+      render json: {messages: 'Signed out'}
+    else
+      render json: {messages: 'Unsuccesful sign-out'}, status: :unauthorized
+    end
   end
 
 end

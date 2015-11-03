@@ -2,17 +2,19 @@ require 'rails_helper'
 
 describe "Sessions" do
 
+  let!(:user) { create :user }
+
   # def app
   #   Rails.application
   # end
 
   context 'post request to /sessions' do
 
-    let!(:user) { create :user }
 
     context 'when password is correct' do
 
       before { session_sign_in }
+
       it 'can start a new session' do
         expect(last_response.status).to eq(201)
       end
@@ -43,6 +45,27 @@ describe "Sessions" do
       end
 
     end
+  end
+
+  context 'sign out' do
+
+    it 'deletes the session with correct credentials' do
+      session_sign_in
+      user = User.find_by_email('test@test.com')
+      session = Session.find_by_user_id("#{user.id}")
+      delete '/sessions', {
+        auth_key: "#{session.auth_key}"
+      }.to_json, {"CONTENT_TYPE" => 'application/json'}
+      expect(last_response.status).to eq 200
+    end
+
+    it 'cannot delete the session with incorrect credentials' do
+      delete '/sessions', {
+        auth_key: "qwjeb123qwe123u"
+      }.to_json, {"CONTENT_TYPE" => 'application/json'}
+      expect(last_response.status).to eq 401
+    end
+
   end
 
 
