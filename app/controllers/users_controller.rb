@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def destroy
     hash = JSON.parse(request.body.read)
     session = Session.find_by_auth_key(hash['auth_key'])
-    user = User.find(id:(session.user_id))
+    user = User.find(session.user_id)
     p session
     if user.destroy
       render json: {}
