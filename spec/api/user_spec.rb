@@ -42,7 +42,19 @@ describe "Users" do
     context 'delete request to /users' do
       it 'with valide authorisation key deletes the user\'s record' do
         sign_up
-      
+        user = Session.last
+        delete '/users', {
+          auth_key: "#{user.auth_key}"
+        }.to_json, {"CONTENT_TYPE" => 'application/json'}
+        expect(last_response.status).to eq 200
+      end
+
+      it 'cannot delete with incorrect credentials' do
+        sign_up
+        delete '/users', {
+          auth_key: "dummy"
+        }.to_json, {"CONTENT_TYPE" => 'application/json'}
+        expect(last_response.status).to eq 401
       end
     end
 
