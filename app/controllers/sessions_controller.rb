@@ -1,26 +1,12 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
 
   def create
-    hash = JSON.parse(request.body.read)
-    user = User.find_by_email(hash['email'])
-    if user.authenticate(hash['password'])
-      token = SecureRandom.hex
-      session = Session.create(user_id:(user.id), auth_key:(token))
-      render json: {auth_key: session.auth_key}, status: 201
-    else
-      render json: {messages: 'Invalid Email or Password'}, status: :unauthorized
-    end
+    log_in(JSON.parse(request.body.read))
   end
 
   def destroy
-    hash = JSON.parse(request.body.read)
-    session = Session.find_by_auth_key(hash['auth_key'])
-    if session
-      session.destroy
-      render json: {messages: 'Signed out'}
-    else
-      render json: {messages: 'Unsuccesful sign-out'}, status: :unauthorized
-    end
+    log_out(JSON.parse(request.body.read))
   end
 
 end
