@@ -25,3 +25,4 @@ angular
 angular:angular-mocks
 angularui:angular-ui-router
 urigo:angular-ui-router
+xolvio:webdriver
