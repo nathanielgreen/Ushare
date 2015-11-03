@@ -18,9 +18,9 @@ class UsersController < ApplicationController
     user = User.find(session.user_id)
     p session
     if user.destroy
-      render json: {'messages': 'User deleted'}, status: 200
+      render json: {messages: 'User deleted'}, status: 200
     else
-      render json: {'messages': 'Unsuccesful delete attempt, please try again'}
+      render json: {messages: 'Unsuccesful delete attempt, please try again'}
     end
   end
 
