@@ -6,9 +6,9 @@ class UsersController < ApplicationController
     if user.save
       token = SecureRandom.hex
       session = Session.create(user_id:(user.id), auth_key:(token))
-      render json: {user_id: user.id, session_auth_key: session.auth_key}
+      render json: {auth_key: session.auth_key}, status: 201
     else
-      render json: user.errors
+      render json: user.errors, status: :unauthorized
     end
   end
 
@@ -18,9 +18,9 @@ class UsersController < ApplicationController
     user = User.find(session.user_id)
     p session
     if user.destroy
-      render json: {}
+      render json: {'messages': 'User deleted'}, status: 200
     else
-      render json: {lol: 'owned'}
+      render json: {'messages': 'Unsuccesful delete attempt, please try again'}
     end
   end
 
