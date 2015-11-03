@@ -9,9 +9,7 @@
 
         <h2>Register</h2>
 
-        <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
-
-        <form name="form" role="form" ng-controller="UserAccess as submit" ng-submit="submit.userSignUp(email, password, password_conf)">
+        <form name="form" ng-controller="UserAccess as submit" ng-submit="submit.userSignUp(email, password, password_conf)">
 
             <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
                 <label for="email">Email</label>
@@ -32,9 +30,7 @@
             </div>
 
             <div class="form-actions">
-
-                <button ui-sref="profile" type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
-                
+                <button id="register_button" type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
                 <a ui-sref="userLogin" class="btn btn-link">Have an account?</a>
             </div>
 
