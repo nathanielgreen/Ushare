@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe User, type: :model do
 
+  it { is_expected.to have_many(:sessions).dependent(:destroy) }
+
   context 'Validations' do
     it { is_expected.to have_secure_password}
 
@@ -23,11 +25,11 @@ describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'requires name of at least 2 characters' do
-      user = User.create(name: '1')
-      expect(user).to have(1).error_on(:name)
-      expect(user).not_to be_valid
-    end
+    # it 'requires name of at least 2 characters' do
+    #   user = User.create(name: '1')
+    #   expect(user).to have(1).error_on(:name)
+    #   expect(user).not_to be_valid
+    # end
 
   end
 
