@@ -4,5 +4,4 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password_confirmation
   validates :email, uniqueness: true
   validates :password, length: { minimum: 5 }
-  validates :name, length: { minimum: 2}
 end
