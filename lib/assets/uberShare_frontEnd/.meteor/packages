@@ -27,3 +27,5 @@ angularui:angular-ui-router
 urigo:angular-ui-router
 xolvio:webdriver
 angular:angular-cookies
+mdg:geolocation
+bevanhunt:leaflet
