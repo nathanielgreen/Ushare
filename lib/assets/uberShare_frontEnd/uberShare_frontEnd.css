@@ -1,24 +1,14 @@
 /* CSS declarations go here */
 #map { height: 800px; width: 100%; }
 
-
-/*@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
-*{
-  margin: 0;
-  padding: 0;
-  font-family: Open sans;
+body {
+background-color: #000000;
 }
 
-body{
-  background: #fff;  
+.container {
+color: #ffffff
 }
 
-h5{
-  text-align: center;
-  margin-top: 50px;
-}
-*/
 #navigation {
   display:block;
   width:173px;
