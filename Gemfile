@@ -17,6 +17,7 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'rspec-collection_matchers'
+  gem 'pry'
 end
 
 

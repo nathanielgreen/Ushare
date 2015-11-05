@@ -6,9 +6,9 @@ class CoordinatesController < ApplicationController
     long = hash['lng'].to_s
     session = Session.find_by_auth_key(hash['auth_key'])
     if session
-      coordinate = Coordinate.create(lat: lat,long: long)
+      coordinate = Coordinate.create(lat: lat,long: long, session_id: session.id)
       if coordinate
-        render json: {messages: "success"}
+        render json: {messages: "success"}, status: 201
       else
         render json: {messages: "coordinate fucked"}
       end
@@ -20,10 +20,15 @@ class CoordinatesController < ApplicationController
 
   def update
     hash = JSON.parse(request.body.read)
-    if session = Session.find_by_auth_key(hash['auth_key'])
+    session = Session.find_by_auth_key(hash['auth_key'])
+    if session
       coordinate = Coordinate.find_by_session_id("#{session.id}")
-      coordinate.update(lat:(hash['lat']),long:(hash['long']))
-      render json: coordinate, status: 200
+      if coordinate
+        coordinate.update(lat:(hash['lat']),long:(hash['long']))
+        render json: coordinate, status: 200
+      else
+        render json: {messages: "coordinate fucked"}
+      end
     else
       render json: {messages: "Error"}, status: :unauthorized
     end
