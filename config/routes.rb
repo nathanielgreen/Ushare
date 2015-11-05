@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   delete 'users' => 'users#destroy'
   post 'sessions' => 'sessions#create'
   delete 'sessions' => 'sessions#destroy'
+  post 'coordinates' => 'coordinates#create'
+  put 'coordinates' => 'coordinates#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
