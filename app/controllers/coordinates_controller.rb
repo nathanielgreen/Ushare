@@ -5,10 +5,11 @@ class CoordinatesController < ApplicationController
     lat = hash['lat'].to_s
     long = hash['long'].to_s
     session = Session.find_by_auth_key(hash['auth_key'])
+    user = User.find(session.user_id)
     if session
-      coordinate = Coordinate.create(lat: lat,long: long, session_id: session.id)
+      coordinate = Coordinate.create(lat: lat,long: long, session_id: session.id, user_id: user.id)
       if coordinate
-        render json: {messages: "success"}, status: 201
+        render json: Coordinate.all, status: 201
       else
         render json: {messages: "coordinate fucked"}
       end
