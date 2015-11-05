@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103092934) do
+ActiveRecord::Schema.define(version: 20151105095648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coordinates", force: :cascade do |t|
+    t.string   "lat"
+    t.string   "long"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "coordinates", ["user_id"], name: "index_coordinates_on_user_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.string   "auth_key"
@@ -33,5 +43,6 @@ ActiveRecord::Schema.define(version: 20151103092934) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "coordinates", "users"
   add_foreign_key "sessions", "users"
 end
