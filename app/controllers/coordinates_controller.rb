@@ -4,9 +4,9 @@ class CoordinatesController < ApplicationController
     hash = JSON.parse(request.body.read)
     lat = hash['lat'].to_s
     long = hash['long'].to_s
-    session = Session.find_by_auth_key(hash['auth_key'])
-    if session
-      coordinate = Coordinate.create(lat:(lat),long:(long),session_id:("#{session.id}"))
+    # session = Session.find_by_auth_key(hash['auth_key'])
+    # if session
+      coordinate = Coordinate.create(lat:(lat),long:(long)) #,session_id:("#{session.id}"))
       if coordinate
         render json: {messages: "success"}
       else
