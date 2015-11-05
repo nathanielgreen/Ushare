@@ -11,7 +11,7 @@
 
         <h2 id="signup_header">Register</h2>
 
-        <form name="form" ng-controller="UserAccess as submit" ng-submit="submit.userSignUp(email, password, password_conf)">
+        <form name="form" ng-controller="UserAccess as submit" ng-submit="submit.userSignUp(user.email, user.password, user.password_conf)" ui-sref="profile" >
 
             <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
                 <label for="email">Email</label>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-actions">
-                <button id="signup_button" type="submit" ng-disabled="form.$invalid" ui-sref="profile" class="btn btn-primary">Register</button>
+                <button id="signup_button" type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
                 <a ui-sref="userLogin" class="btn btn-link">Have an account?</a>
                 <span ng-show="form.password_conf.$error.match && form.password_conf.$dirty" class="help-block">Password confirmation must match</span>
             </div>
