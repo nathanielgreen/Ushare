@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105100809) do
+ActiveRecord::Schema.define(version: 20151105141852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20151105100809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.integer  "session_id"
+    t.string   "lat_end"
+    t.string   "long_end"
   end
 
-  add_index "coordinates", ["session_id"], name: "index_coordinates_on_session_id", using: :btree
   add_index "coordinates", ["user_id"], name: "index_coordinates_on_user_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20151105100809) do
     t.datetime "updated_at",      null: false
   end
 
-  add_foreign_key "coordinates", "sessions"
   add_foreign_key "coordinates", "users"
   add_foreign_key "sessions", "users"
 end

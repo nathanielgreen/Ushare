@@ -1,4 +1,5 @@
 class CoordinatesController < ApplicationController
+
   def create
     hash = JSON.parse(request.body.read)
     session = Session.find_by_auth_key(hash['auth_key'])
@@ -21,7 +22,7 @@ class CoordinatesController < ApplicationController
     end
   end
 
-private
+  private
 
   def coordinates_params
     params.require(:coordinate).permit(:long, :lat, :session_id)
