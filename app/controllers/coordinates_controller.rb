@@ -7,7 +7,7 @@ class CoordinatesController < ApplicationController
     session = Session.find_by_auth_key(hash['auth_key'])
     if session
       if coordinate = Coordinate.create(lat:(lat),long:(long),session_id:("#{session.id}"))
-        render json: coordinate, status: 201
+        render json: {messages: "success"}
       else
         render json: {messages: "coordinate fucked"}
       end
