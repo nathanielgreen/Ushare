@@ -1,5 +1,5 @@
-<template name="userProfile">
-  <h2> Find a share </h2>
+<template name="userAccount">
+  <h2> Your Account </h2>
 
   <body>
     <div id="navigation">
@@ -22,21 +22,5 @@
 
     </div>
   </body>
-
-    <div id="destinForm">
-      <h3 style="color:white"> Choose your Destination: </h3>
-      <form ng-controller="UserAccess as submit"
-        ng-submit="submit.chooseDestin(userInput)">
-        <input class="formField" type="text" name="userInput" ng-model="userInput">
-        <input class="formButton" type="submit" value="Submit">
-        <button class="formButton" ng-click="submit.findMe()">
-          Find Others
-        </button>
-      </form>
-    </div>
-
-    <div id="map">
-      {{foo}}
-    </div>
 
 </template>

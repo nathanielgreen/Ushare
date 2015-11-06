@@ -1,8 +1,36 @@
 /* CSS declarations go here */
-#map { height: 800px; width: 100%; }
+#map {
+  height: 800px;
+  width: 100%; 
+}
+
+#destinForm { 
+  text-align: center;
+  color: black;
+  padding: 30px;
+}
 
 body {
 background-color: #000000;
+}
+
+.formField {
+  border-radius: 4px;
+  font-family: Arial;
+  border: 1px;
+  border-color: #CCC;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.formButton {
+  border-radius: 4px;
+  background-color: #337AB7;
+  border: 1px;
+  border-color: #2E6DA4;
+  padding: 7px;
+  color: white;
+  font-family: Arial;
 }
 
 .container {
@@ -25,9 +53,9 @@ color: #ffffff
 
 .toggleline {
   margin-bottom: 5px;
-  background: #A1A1A1;
+  background: #ffffff;
   width: 37px;
-  height: 5px;
+  height: 4px;
   cursor: pointer;
 }
 
@@ -39,19 +67,46 @@ color: #ffffff
   list-style-type:none;display:inline;
 }
 
-.menu a {
+.menu button {
   text-align:center;
   display:block;
   width:100%;
   height:31px;
   text-decoration:none;
-  color:#918170;
+  color:#ffffff;
   padding-top:9px;
-  background-color:#E4E4E4;
-  border-top:1px solid #FFF;
+  background-color:#000000;
+  border-top:1px solid #ffffff;
 }
 
-.menu a:hover {
-  color:#FFF;
-  background-color:#918170;
+.menu button:hover {
+  color:#696969;
+  background-color:#ffffff;
+}
+
+
+
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transition:all .5s ease-in-out;
+  transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].ng-leave {
+  opacity: 1;
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
 }
