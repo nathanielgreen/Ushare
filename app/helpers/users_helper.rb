@@ -4,7 +4,7 @@ module UsersHelper
     user = User.new(email:(hash['email']),name:(hash['name']),password:(hash['password']),password_confirmation:(hash['password_confirmation']))
     if user.save
       session = Session.create(user_id:(user.id), auth_key:(SecureRandom.hex))
-      render json: {auth_key: session.auth_key}, status: 201
+      render json: {auth_key: session.auth_key, user_id: user.id}, status: 201
     else
       render json: user.errors, status: :unauthorized
     end
