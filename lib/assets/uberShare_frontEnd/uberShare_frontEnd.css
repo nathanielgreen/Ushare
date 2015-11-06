@@ -1,8 +1,36 @@
 /* CSS declarations go here */
-#map { height: 800px; width: 100%; }
+#map {
+  height: 800px;
+  width: 100%; 
+}
+
+#destinForm { 
+  text-align: center;
+  color: black;
+  padding: 30px;
+}
 
 body {
 background-color: #000000;
+}
+
+.formField {
+  border-radius: 4px;
+  font-family: Arial;
+  border: 1px;
+  border-color: #CCC;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.formButton {
+  border-radius: 4px;
+  background-color: #337AB7;
+  border: 1px;
+  border-color: #2E6DA4;
+  padding: 7px;
+  color: white;
+  font-family: Arial;
 }
 
 .container {

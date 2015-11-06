@@ -11,3 +11,4 @@
 /log/*
 !/log/.keep
 /tmp
+/lib/assets/uberShare_frontEnd/apiKey.js

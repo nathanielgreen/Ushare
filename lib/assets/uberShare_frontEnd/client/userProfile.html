@@ -22,10 +22,19 @@
 
     </div>
   </body>
-  <button ng-controller="UserAccess as submit" ng-click="submit.findMe()"
-    style="color: black">
-    Find Me
-  </button>
+
+    <div id="destinForm">
+      <h3 style="color:white"> Choose your Destination: </h3>
+      <form ng-controller="UserAccess as submit"
+        ng-submit="submit.chooseDestin(userInput)">
+        <input class="formField" type="text" name="userInput" ng-model="userInput">
+        <input class="formButton" type="submit" value="Submit">
+        <button class="formButton" ng-click="submit.findMe()">
+          Find Others
+        </button>
+      </form>
+    </div>
+
     <div id="map">
       {{foo}}
     </div>
