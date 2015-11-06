@@ -24,9 +24,8 @@ class CoordinatesController < ApplicationController
     session = Session.find_by_auth_key(hash['auth_key'])
     if session
       coordinate = Coordinate.find_by_session_id("#{session.id}")
-      if coordinate
-        format_hash(hash, coordinate)
-        coordinate.update(lat:(hash['lat']),long:(hash['long']), lat_end:(hash['lat_end']), long_end:(hash['long_end']))
+      hash.delete('auth_key')
+      if coordinate.update_attributes(hash)
         render json: Coordinate.all, status: 201
       else
         render json: {messages: "coordinate not updated" }, status: :unauthorized
@@ -35,12 +34,4 @@ class CoordinatesController < ApplicationController
       render json: {messages: "session not found" }, status: :unauthorized
     end
   end
-
-  def format_hash(hash, coordinate)
-      hash['lat'] = coordinate.lat if hash['lat'] == nil
-      hash['long'] = coordinate.long if hash['long'] == nil
-      hash['lat_end'] = coordinate.lat_end if hash['lat_end'] == nil
-      hash['long_end'] = coordinate.long_end if hash['long_end'] == nil
-  end
-
 end
