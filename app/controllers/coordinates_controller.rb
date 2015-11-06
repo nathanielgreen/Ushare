@@ -4,10 +4,12 @@ class CoordinatesController < ApplicationController
     hash = JSON.parse(request.body.read)
     lat = hash['lat'].to_s
     long = hash['long'].to_s
+    lat_end = hash['lat_end'].to_s
+    long_end = hash['long_end'].to_s
     session = Session.find_by_auth_key(hash['auth_key'])
     if session
     user = User.find(session.user_id)
-      coordinate = Coordinate.create(lat: lat,long: long, session_id: session.id, user_id: user.id)
+      coordinate = Coordinate.create(lat: lat,long: long, session_id: session.id, user_id: user.id, long_end: long_end, lat_end: lat_end)
       if coordinate
         render json: Coordinate.all, status: 201
       else
