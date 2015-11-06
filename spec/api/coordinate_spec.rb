@@ -14,7 +14,7 @@ describe "Coordinates" do
       expect(last_response.status).to be 201
     end
 
-    it 'will add new coordinates if auth key correct' do
+    it 'will not add new coordinates if auth key incorrect' do
       sign_up
       session = Session.last
       post '/coordinates', {

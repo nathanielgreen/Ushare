@@ -5,16 +5,16 @@ class CoordinatesController < ApplicationController
     lat = hash['lat'].to_s
     long = hash['long'].to_s
     session = Session.find_by_auth_key(hash['auth_key'])
-    user = User.find(session.user_id)
     if session
+      user = User.find(session.user_id)
       coordinate = Coordinate.create(lat: lat,long: long, session_id: session.id, user_id: user.id)
       if coordinate
         render json: Coordinate.all, status: 201
       else
-        render json: {messages: "coordinate fucked"}
+        render json: {messages: "coordinate not created" }
       end
     else
-      render json: {messages: "session fucked"}, status: :unauthorized
+      render json: {messages: "session not found"}, status: :unauthorized
     end
   end
 
@@ -26,12 +26,12 @@ class CoordinatesController < ApplicationController
       coordinate = Coordinate.find_by_session_id("#{session.id}")
       if coordinate
         coordinate.update(lat:(hash['lat']),long:(hash['long']))
-        render json: coordinate, status: 200
+        render json: Coordinate.all, status: 201
       else
-        render json: {messages: "coordinate fucked"}
+        render json: {messages: "coordinate not updated" }
       end
     else
-      render json: {messages: "Error"}, status: :unauthorized
+      render json: {messages: "session not found" }, status: :unauthorized
     end
   end
 
