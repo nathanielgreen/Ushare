@@ -6,10 +6,11 @@ gem 'rake'
 gem 'rails-api'
 gem 'json'
 
-
 gem 'spring', :group => :development
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pg'
+gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
+gem 'httparty'
 
 group :test do
   gem 'rack-test'

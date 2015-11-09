@@ -1,4 +1,5 @@
 class CoordinatesController < ApplicationController
+  include CoordinatesHelper
 
   def create
     hash = JSON.parse(request.body.read)
@@ -28,6 +29,9 @@ class CoordinatesController < ApplicationController
       coordinate = Coordinate.find_by_session_id("#{session.id}")
       hash.delete('auth_key')
       if coordinate.update_attributes(hash)
+        price = JSON.parse((show_price(coordinate)).body)
+        # p a = time['times'][0]['estimate']
+        # p seconds_to_minutes(a)
         render json: Coordinate.all, status: 201
       else
         render json: {messages: "coordinate not updated" }, status: :unauthorized
@@ -35,5 +39,7 @@ class CoordinatesController < ApplicationController
     else
       render json: {messages: "session not found" }, status: :unauthorized
     end
+
   end
+
 end
