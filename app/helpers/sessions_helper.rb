@@ -4,7 +4,7 @@ module SessionsHelper
     user = User.find_by_email(hash['email'])
     if user.authenticate(hash['password'])
       session = Session.create(user_id:(user.id), auth_key:(SecureRandom.hex))
-      render json: {auth_key: session.auth_key, user_id: user.id}, status: 201
+      render json: {auth_key: session.auth_key, user_id: user.id, username: user.username}, status: 201
     else
       render json: {messages: 'Invalid Email or Password'}, status: :unauthorized
     end

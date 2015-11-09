@@ -5,7 +5,7 @@ gem 'rails', '4.2.4'
 gem 'rake'
 gem 'rails-api'
 gem 'json'
-
+gem 'pusher'
 gem 'spring', :group => :development
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pg'
