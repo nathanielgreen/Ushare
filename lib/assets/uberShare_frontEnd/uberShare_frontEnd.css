@@ -1,7 +1,11 @@
 /* CSS declarations go here */
 #map {
   height: 800px;
-  width: 100%; 
+  width: 100%;
+  border: 1px;
+  border-radius: 4px;
+  border-color: #FFF;
+  color: #000;
 }
 
 #destinForm { 
@@ -25,11 +29,11 @@ background-color: #000000;
 
 .formButton {
   border-radius: 4px;
-  background-color: #337AB7;
+  background-color: #FFF;
   border: 1px;
   border-color: #2E6DA4;
   padding: 7px;
-  color: white;
+  color: #000;
   font-family: Arial;
 }
 
