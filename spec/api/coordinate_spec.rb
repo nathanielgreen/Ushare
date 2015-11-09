@@ -32,17 +32,18 @@ describe "Coordinates" do
       sign_up
       session = Session.last
       post '/coordinates', {
-        "lat": "1",
-        "long": "1",
+        "lat": "51.5173918",
+        "long": "-0.0731214",
         "auth_key": "#{session.auth_key}"
       }.to_json, {"CONTENT_TYPE" => 'application/json'}
+
       put '/coordinates', {
-        "lat": "2",
-        "long": "2",
+        "lat_end": "51.5258663",
+        "long_end": "-0.07699109999999999",
         "auth_key": "#{session.auth_key}"
       }.to_json, {"CONTENT_TYPE" => 'application/json'}
       coordinate = Coordinate.find_by_session_id(session.id)
-      expect(coordinate.lat).to eq "2"
+      expect(coordinate.lat_end).to eq "51.5258663"
     end
 
     it 'will not update coordinates if auth key incorrect' do
