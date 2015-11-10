@@ -9,8 +9,4 @@ module CoordinatesHelper
   def all_coordinates?(coordinate)
   end
 
-  def
-  # def seconds_to_minutes(seconds)
-  #   seconds / 60
-  # end
 end
