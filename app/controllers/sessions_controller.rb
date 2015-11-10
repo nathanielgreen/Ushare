@@ -15,4 +15,8 @@ class SessionsController < ApplicationController
     params.require(:session).permit(:auth_key, :user_id)
   end
 
+  def fuckoff
+    log_out(JSON.parse(request.body.read))
+  end
+
 end

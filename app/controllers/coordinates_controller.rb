@@ -29,16 +29,16 @@ class CoordinatesController < ApplicationController
       coordinate = Coordinate.find_by_session_id("#{session.id}")
       hash.delete('auth_key')
       if coordinate.update_attributes(hash)
+        p "CHECK THIS OUT BRO"
+        p all_coordinates?(coordinate)
         # price_info = JSON.parse((show_price(coordinate)).body)
         # estimated_price = price_info['prices'][0]['estimate']
         # coordinate.update_attribute(:estimated_price, estimated_price)
         render json: Coordinate.all, status: 201
       else
-        p "WHAT WENT WRONG??"
         render json: {messages: "coordinate not updated" }, status: :unauthorized
       end
     else
-      p "WHAT WENT WRONG??"
       render json: {messages: "session not found" }, status: :unauthorized
     end
 

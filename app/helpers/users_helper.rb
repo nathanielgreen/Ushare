@@ -6,8 +6,6 @@ module UsersHelper
       session = Session.create(user_id:(user.id), auth_key:(SecureRandom.hex))
       render json: {auth_key: session.auth_key, user_id: user.id, username: user.username}, status: 201
     else
-      p "WHAT WENT WRONG?"
-      p user.errors
       render json: user.errors, status: :unauthorized
     end
   end

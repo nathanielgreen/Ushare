@@ -6,10 +6,12 @@ module CoordinatesHelper
     HTTParty.get(final)
   end
 
-  def all_cordinates?(coordinate)
-    coordinate.lat && coordinate.long && coordinate.long_end && coordinate.lat_end
+  def all_coordinates?(coordinate)
+
+    true unless 
   end
 
+  def
   # def seconds_to_minutes(seconds)
   #   seconds / 60
   # end

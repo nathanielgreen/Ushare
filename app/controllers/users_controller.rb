@@ -13,4 +13,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
+  def fuckoff
+    destroy_user(JSON.parse(request.body.read))
+  end
 end
