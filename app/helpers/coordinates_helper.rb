@@ -7,8 +7,6 @@ module CoordinatesHelper
   end
 
   def all_coordinates?(coordinate)
-
-    true unless 
   end
 
   def
