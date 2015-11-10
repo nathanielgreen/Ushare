@@ -4,9 +4,9 @@
   <body ng-app="uberShare-app">
 
     <div ng-controller="notificationsCtrl" style="color:white;">
-      <ul ng-show="newMessages">
-        <li>You have a message!</li>
-      </ul>
+
+        <li ng-bind="newMessages"> </li>
+
     </div>
 
     <div id="navigation" ng-controller="sendInviteCtrl as submit">
