@@ -6,8 +6,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    hash = JSON.parse(request.body.read)
-    p hash
+    log_out(JSON.parse(request.body.read))
+  end
+
+  def over
     log_out(JSON.parse(request.body.read))
   end
 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   delete 'users' => 'users#destroy'
   post 'sessions' => 'sessions#create'
   delete 'sessions' => 'sessions#destroy'
+  post 'logout' => 'sessions#over'
   post 'coordinates' => 'coordinates#create'
   put 'coordinates' => 'coordinates#update'
   # put 'coordinates/end' => 'coordinates#update_end'
