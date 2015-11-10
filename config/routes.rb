@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete 'sessions' => 'sessions#destroy'
   post 'coordinates' => 'coordinates#create'
   put 'coordinates' => 'coordinates#update'
-  post 'fuckoff' => 'sessions#fuckoff'
   # put 'coordinates/end' => 'coordinates#update_end'
   # put 'coordinates/all' => 'coordinates#update_all'
   # The priority is based upon order of creation: first created -> highest priority.
