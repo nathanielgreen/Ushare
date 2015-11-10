@@ -1,27 +1,44 @@
 <template name="userProfile">
   <h2> Find a share </h2>
 
-  <body>
+  <body ng-app="uberShare-app">
 
-    <div id="navigation">
-      
-      <div class="toggle">
-        <div class="toggleline"></div>
-        <div class="toggleline"></div>
-        <div class="toggleline"></div>
-      </div>
-      
-      <div class="menu">
-        <ul>
-          <li><button ui-sref="profile">Find a Share</button></li>
-          <li><button ui-sref="userUniqueProfile">Profile</button></li>
-          <li><button ui-sref="userMessages">Messages</button></li>
-          <li><button ui-sref="userAccount">Account</button></li>
-          <li><button ui-sref="userSettings">Settings</button></li>
-        </ul>
-      </div>
+    <div ng-controller="notificationsCtrl" style="color:white;">
+      <ul>
+        <li ng-repeat="invite in invites">Date: {{invite.date}}</li>
+        <li ng-repeat="invite in invites">Body: {{invite.body}}</li>
+        <li ng-repeat="invite in invites">From: {{invite.from}}</li>
+      </ul>
+    </div>
+
+    <div id="navigation" ng-controller="sendInviteCtrl as submit">
+      <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);">
+        <input ng-model="inviteBody" type="text"
+               name="inviteBody" placeholder="Type to add new invite"
+               style="color:black;" />
+        <input ng-model="recipient" type="text"
+               name="recipient" placeholder="Recipient">
+              <input type="submit" value="Submit" />
+      </form>
 
     </div>
+      
+    <div class="toggle">
+      <div class="toggleline"></div>
+      <div class="toggleline"></div>
+      <div class="toggleline"></div>
+    </div>
+    
+    <div class="menu">
+      <ul>
+        <li><button ui-sref="profile">Find a Share</button></li>
+        <li><button ui-sref="userUniqueProfile">Profile</button></li>
+        <li><button ui-sref="userMessages">Messages</button></li>
+        <li><button ui-sref="userAccount">Account</button></li>
+        <li><button ui-sref="userSettings">Settings</button></li>
+      </ul>
+    </div>
+
   </body>
 
     <div id="destinForm">
@@ -32,11 +49,6 @@
         <input class="formButton" type="submit" value="Submit">
         <button class="formButton" ng-click="submit.findMe()">
           Find Others
-        </button>
-      </form>
-      <form class="sendNotification">
-        <button>
-          Submit Notification
         </button>
       </form>
     </div>
