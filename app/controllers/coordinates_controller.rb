@@ -14,9 +14,11 @@ class CoordinatesController < ApplicationController
       if coordinate
         render json: Coordinate.all, status: 201
       else
+        p "WHAT WENT WRONG??"
         render json: {messages: "coordinate not created" }
       end
     else
+      p "WHAT WENT WRONG??"
       render json: {messages: "session not found"}, status: :unauthorized
     end
   end
@@ -34,9 +36,11 @@ class CoordinatesController < ApplicationController
         coordinate.update_attribute(:estimated_price, estimated_price)
         render json: Coordinate.all, status: 201
       else
+        p "WHAT WENT WRONG??"
         render json: {messages: "coordinate not updated" }, status: :unauthorized
       end
     else
+      p "WHAT WENT WRONG??"
       render json: {messages: "session not found" }, status: :unauthorized
     end
 
