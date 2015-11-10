@@ -3,9 +3,6 @@ module SessionsHelper
   def log_in(hash)
     user = User.find_by_email(hash['email'])
     if user.authenticate(hash['password'])
-      if Session.find_by_user_id(user.id)
-        render json: {messages: 'User already logged in'}
-      else
       session = Session.create(user_id:(user.id), auth_key:(SecureRandom.hex))
       render json: {auth_key: session.auth_key, user_id: user.id, username: user.username}, status: 201
       end
