@@ -4,20 +4,19 @@
   <body ng-app="uberShare-app">
 
     <div ng-controller="notificationsCtrl" style="color:white;">
-      <ul>
-        <li ng-repeat="invite in invites">Date: {{invite.date}}</li>
-        <li ng-repeat="invite in invites">Body: {{invite.body}}</li>
-        <li ng-repeat="invite in invites">From: {{invite.from}}</li>
+      <ul ng-show="newMessages">
+        <li>You have a message!</li>
       </ul>
     </div>
 
     <div id="navigation" ng-controller="sendInviteCtrl as submit">
-      <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);">
+      <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);"
+      style="color:black;">
         <input ng-model="inviteBody" type="text"
-               name="inviteBody" placeholder="Type to add new invite"
+               name="inviteBody" placeholder="message"
                style="color:black;" />
         <input ng-model="recipient" type="text"
-               name="recipient" placeholder="Recipient">
+               name="recipient" placeholder="username">
               <input type="submit" value="Submit" />
       </form>
 
