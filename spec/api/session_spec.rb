@@ -53,14 +53,14 @@ describe "Sessions" do
       session_sign_in
       user = User.find_by_email('test@test.com')
       session = Session.find_by_user_id("#{user.id}")
-      delete '/sessions', {
+      post '/logout', {
         auth_key: "#{session.auth_key}"
       }.to_json, {"CONTENT_TYPE" => 'application/json'}
       expect(last_response.status).to eq 200
     end
 
     it 'cannot delete the session with incorrect credentials' do
-      delete '/sessions', {
+      post '/logout', {
         auth_key: "qwjeb123qwe123u"
       }.to_json, {"CONTENT_TYPE" => 'application/json'}
       expect(last_response.status).to eq 401
