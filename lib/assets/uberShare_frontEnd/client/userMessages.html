@@ -12,8 +12,6 @@
       <input type="submit" value="Submit" />
     </form>
   </div>
-
-<body>
   <div ng-controller="messageBoardCtrl as messageList" style="color:white;">
     <div ng-repeat="message in messageList.messages">
       <ul class="list-group">
@@ -26,13 +24,13 @@
           <button type="submit" class="btn btn-primary" style="float:right;">Reply</button>
             <form class="reply-box" ng-controller="sendInviteCtrl as submit"
                     ng-submit="submit.submitInvite(inviteBody, message.from);">
-              <input name="inviteBody" placeholder="message" type="text">
+              <input name="inviteBody" placeholder="message" type="text"
+                    ng-model="inviteBody">
               <button type="submit" class="btn btn-primary">Send</button>
             </form>
         </div>
       </ul>
     </div>
   </div>
-</body>
 
 </template>

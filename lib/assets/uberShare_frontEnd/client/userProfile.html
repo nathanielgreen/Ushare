@@ -1,30 +1,24 @@
-
 <template name="userProfile">
-  
   <h2> Find a share </h2>
 
   <div ng-controller="notificationsCtrl" style="color:white;">
     <li class="alert alert-info" ng-show="newMessages" ui-sref="userMessages" href=""> You have a new Message!</li>
   </div>
 
-  <body ng-app="uberShare-app">
+  <div id="destinForm">
+    <h3 style="color:white"> Choose your Destination: </h3>
+    <form ng-controller="UserAccess as submit"
+      ng-submit="submit.chooseDestin(userInput)">
+      <input class="formField" type="text" name="userInput" ng-model="userInput">
+      <input class="formButton" type="submit" value="Submit">
+      <button class="formButton" ng-click="submit.findOthers()">
+        Find Others
+      </button>
+    </form>
+  </div>
 
-  </body>
-
-    <div id="destinForm">
-      <h3 style="color:white"> Choose your Destination: </h3>
-      <form ng-controller="UserAccess as submit"
-        ng-submit="submit.chooseDestin(userInput)">
-        <input class="formField" type="text" name="userInput" ng-model="userInput">
-        <input class="formButton" type="submit" value="Submit">
-        <button class="formButton" ng-click="submit.findOthers()">
-          Find Others
-        </button>
-      </form>
-    </div>
-
-    <div id="map">
-      {{foo}}
-    </div>
+  <div id="map">
+    {{foo}}
+  </div>
 
 </template>
