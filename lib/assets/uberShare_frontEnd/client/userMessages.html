@@ -1,18 +1,20 @@
 <template name="userMessages">
   <h2> Your Messages </h2>
+  <br>
+  <h3 class="btn btn-primary" id="new-msg" style="margin-bottom:20px;"> New Message </h3>
 
-  <div id="navigation" ng-controller="sendInviteCtrl as submit">
-    <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);"
-            style="color:black;">
+  <div ng-controller="messageBoardCtrl as messageList" style="color:white;">
+    <form id="new-msg-box" class="list-group-item" ng-controller="sendInviteCtrl as submit" 
+        ng-submit="submit.submitInvite(inviteBody, recipient);"
+        style="color:black;">
       <input ng-model="inviteBody" type="text"
-            name="inviteBody" placeholder="message"
-            style="color:black;" />
+        name="inviteBody" placeholder="message"
+        style="color:black;" />
       <input ng-model="recipient" type="text"
-            name="recipient" placeholder="username">
+        name="recipient" placeholder="username">
       <input type="submit" value="Submit" />
     </form>
-  </div>
-  <div ng-controller="messageBoardCtrl as messageList" style="color:white;">
+
     <div ng-repeat="message in messageList.messages">
       <ul class="list-group">
         <div class="list-group-item" style="min-height:130px;">
@@ -21,11 +23,11 @@
           From:
           <span ng-bind="message.from" ng-model="message.from"> </span> <br>
           <span ng-bind="message.body" style="font-weight:bold;"></span> <br>
-          <button type="submit" class="btn btn-primary" style="float:right;">Reply</button>
+          <button type="submit" class="btn btn-primary" id="reply-msg" style="float:right;">Reply</button>
             <form class="reply-box" ng-controller="sendInviteCtrl as submit"
-                    ng-submit="submit.submitInvite(inviteBody, message.from);">
+                ng-submit="submit.submitInvite(inviteBody, message.from);">
               <input name="inviteBody" placeholder="message" type="text"
-                    ng-model="inviteBody">
+                ng-model="inviteBody">
               <button type="submit" class="btn btn-primary">Send</button>
             </form>
         </div>
