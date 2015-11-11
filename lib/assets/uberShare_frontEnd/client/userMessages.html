@@ -1,58 +1,38 @@
 <template name="userMessages">
   <h2> Your Messages </h2>
 
-  <body>
-    <div id="navigation">
-      
-      <div class="toggle">
-        <div class="toggleline"></div>
-        <div class="toggleline"></div>
-        <div class="toggleline"></div>
-      </div>
-      
-      <div class="menu">
-        <ul>
-          <li><button ui-sref="profile">Find a Share</button></li>
-          <li><button ui-sref="userUniqueProfile">Profile</button></li>
-          <li><button ui-sref="userMessages">Messages</button></li>
-        </ul>
-      </div>
+  <div id="navigation" ng-controller="sendInviteCtrl as submit">
+    <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);"
+            style="color:black;">
+      <input ng-model="inviteBody" type="text"
+            name="inviteBody" placeholder="message"
+            style="color:black;" />
+      <input ng-model="recipient" type="text"
+            name="recipient" placeholder="username">
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
 
-      <div id="navigation" ng-controller="sendInviteCtrl as submit">
-        <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);"
-              style="color:black;">
-        <input ng-model="inviteBody" type="text"
-              name="inviteBody" placeholder="message"
-              style="color:black;" />
-        <input ng-model="recipient" type="text"
-              name="recipient" placeholder="username">
-        <input type="submit" value="Submit" />
-
-<!--             <select name="userList" id="userList" ng-model="">
-                <option ng-repeat="user in messageList.userList" ng-bind="message.from"></option>
-            </select> -->
-
-        </form>
-
-      </div>
-
+<body>
+  <div ng-controller="messageBoardCtrl as messageList" style="color:white;">
+    <div ng-repeat="message in messageList.messages">
+      <ul class="list-group">
+        <div class="list-group-item" style="min-height:130px;">
+          Date:
+          <span ng-bind="message.date"> </span> <br>
+          From:
+          <span ng-bind="message.from" ng-model="message.from"> </span> <br>
+          <span ng-bind="message.body" style="font-weight:bold;"></span> <br>
+          <button type="submit" class="btn btn-primary" style="float:right;">Reply</button>
+            <form class="reply-box" ng-controller="sendInviteCtrl as submit"
+                    ng-submit="submit.submitInvite(inviteBody, message.from);">
+              <input name="inviteBody" placeholder="message" type="text">
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+      </ul>
     </div>
-
-    <div ng-controller="messageBoardCtrl as messageList" style="color:white;">
-      <div ng-repeat="message in messageList.messages">
-        <ul class="list-group">
-          <li class="list-group-item" ng-bind="message.date"> </li>
-          <li class="list-group-item" ng-bind="message.from" ng-model="message.from"> </li>
-          <li class="list-group-item" ng-bind="message.body"></li>
-          <button type="submit" class="btn btn-primary">Reply</button>
-          <form class="reply-box" ng-controller="sendInviteCtrl as submit"
-                  ng-submit="submit.submitInvite(inviteBody, message.from);">
-            <input name="inviteBody" placeholder="message" type="text">
-            <button type="submit" class="btn btn-primary">Send</button>
-          </form>
-        </ul>
-      </div>
-    </div>
-  </body>
+  </div>
+</body>
 
 </template>
