@@ -1,25 +1,14 @@
+
 <template name="userProfile">
+  
   <h2> Find a share </h2>
 
+  <div ng-controller="notificationsCtrl" style="color:white;">
+    <li class="alert alert-info" ng-show="newMessages" ui-sref="userMessages" href=""> You have a new Message!</li>
+  </div>
+
   <body ng-app="uberShare-app">
-
-
-    <div id="navigation" ng-controller="sendInviteCtrl as submit">
-      <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);"
-      style="color:black;">
-        <input ng-model="inviteBody" type="text"
-               name="inviteBody" placeholder="message"
-               style="color:black;" />
-        <input ng-model="recipient" type="text"
-               name="recipient" placeholder="username">
-              <input type="submit" value="Submit" />
-      </form>
-
-    </div>
     
-    <div ng-controller="notificationsCtrl" style="color:white;">
-      <li ng-show="newMessages" ui-sref="userMessages" href=""> You have a new Message!</li>
-    </div>
       
     <div class="toggle">
       <div class="toggleline"></div>
