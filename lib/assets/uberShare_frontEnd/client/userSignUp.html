@@ -11,13 +11,20 @@
 
         <h2 id="signup_header">Register</h2>
 
-        <form name="form" ng-controller="UserAccess as submit" ng-submit="submit.userSignUp(user.email, user.password, user.password_conf)" ui-sref="profile" >
+        <form name="form" ng-controller="UserAccess as submit" ng-submit="submit.userSignUp(user.email, user.password, user.password_conf, user.username)" ui-sref="profile" >
 
             <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
                 <label for="email">Email</label>
                 <input type="text" name="email" class="form-control" ng-model="user.email" required />
                 <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
             </div>
+
+            <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" ng-model="user.username" required />
+                <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+            </div>
+
             <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
                 <label for="password">Password</label>
                 <input type="password" name="password" ng-minlength="5" class="form-control" ng-model="user.password" required />
