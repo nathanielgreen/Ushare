@@ -3,11 +3,6 @@
 
   <body ng-app="uberShare-app">
 
-    <div ng-controller="notificationsCtrl" style="color:white;">
-
-        <li ng-bind="newMessages"> </li>
-
-    </div>
 
     <div id="navigation" ng-controller="sendInviteCtrl as submit">
       <form class="new-task" ng-submit="submit.submitInvite(inviteBody, recipient);"
@@ -20,6 +15,10 @@
               <input type="submit" value="Submit" />
       </form>
 
+    </div>
+    
+    <div ng-controller="notificationsCtrl" style="color:white;">
+      <li ng-show="newMessages" ui-sref="userMessages" href=""> You have a new Message!</li>
     </div>
       
     <div class="toggle">

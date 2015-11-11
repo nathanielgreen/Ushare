@@ -1,0 +1,11 @@
+.list-group {
+  color: black;
+}
+
+.btn.btn-primary {
+  margin-top: 5px;
+}
+
+.reply-box {
+  display:none;
+}

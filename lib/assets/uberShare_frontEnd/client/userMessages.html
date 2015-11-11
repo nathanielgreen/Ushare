@@ -21,6 +21,21 @@
       </div>
 
     </div>
+
+    <div ng-controller="messageBoardCtrl as messageList" style="color:white;">
+      <div ng-repeat="message in messageList.messages">
+        <ul class="list-group">
+          <li class="list-group-item" ng-bind="message.date"> </li>
+          <li class="list-group-item" ng-bind="message.from"> </li>
+          <li class="list-group-item" ng-bind="message.body"> </li>
+          <button type="submit" class="btn btn-primary">Reply</button>
+          <form class="reply-box">
+            <input type="text">
+            <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+        </ul>
+      </div>
+    </div>
   </body>
 
 </template>
