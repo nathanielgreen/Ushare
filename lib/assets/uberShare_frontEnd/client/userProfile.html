@@ -1,48 +1,25 @@
-
 <template name="userProfile">
-  
   <h2> Find a share </h2>
 
   <div ng-controller="notificationsCtrl" style="color:white;">
     <li class="alert alert-info" ng-show="newMessages" ui-sref="userMessages" href=""> You have a new Message!</li>
   </div>
 
-  <body ng-app="uberShare-app">
-    
-      
-    <div class="toggle">
-      <div class="toggleline"></div>
-      <div class="toggleline"></div>
-      <div class="toggleline"></div>
-    </div>
-    
-    <div class="menu">
-      <ul>
-        <li><button ui-sref="profile">Find a Share</button></li>
-        <li><button ui-sref="userUniqueProfile">Profile</button></li>
-        <li><button ui-sref="userMessages">Messages</button></li>
-        <li><button ui-sref="userAccount">Account</button></li>
-        <li><button ui-sref="userSettings">Settings</button></li>
-      </ul>
-    </div>
+  <div id="destinForm">
+    <h3 style="color:white"> Choose your Destination: </h3>
+    <form ng-controller="UserAccess as submit"
+      ng-submit="submit.chooseDestin(userInput)">
+      <button class="formButton" ng-click="submit.userLogout()">Logout</button>
+      <input class="formField" type="text" name="userInput" ng-model="userInput">
+      <input class="formButton" type="submit" value="Submit">
+      <button class="formButton" ng-click="submit.findOthers()">
+        Find Others
+      </button>
+    </form>
+  </div>
 
-  </body>
-
-    <div id="destinForm">
-      <h3 style="color:white"> Choose your Destination: </h3>
-      <form ng-controller="UserAccess as submit"
-        ng-submit="submit.chooseDestin(userInput)">
-        <button class="formButton" ng-click="submit.userLogout()">Logout</button>
-        <input class="formField" type="text" name="userInput" ng-model="userInput">
-        <input class="formButton" type="submit" value="Submit">
-        <button class="formButton" ng-click="submit.findOthers()">
-          Find Others
-        </button>
-      </form>
-    </div>
-
-    <div id="map">
-      {{foo}}
-    </div>
+  <div id="map">
+    {{foo}}
+  </div>
 
 </template>
