@@ -22,10 +22,12 @@ module CoordinatesHelper
     final = request + '&start_latitude=' + coordinate.lat + '&start_longitude=' + coordinate.long + '&end_longitude=' + coordinate.long_end + '&end_latitude=' + coordinate.lat_end
     HTTParty.get(final)
   end
-  
+
   def create_coordinate(hash, session)
     hash[:session_id] = session.id
     user = User.find(session.user_id)
+    hash[:user_id] = user.id
+    hash[:username] = user.username
     coordinate = Coordinate.create(hash)
     if coordinate
       render json: Coordinate.all, status: 201

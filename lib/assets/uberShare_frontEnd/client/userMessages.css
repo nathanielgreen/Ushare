@@ -9,3 +9,7 @@
 .reply-box {
   display:none;
 }
+
+#new-msg-box {
+  display:none;
+}
