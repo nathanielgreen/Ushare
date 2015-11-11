@@ -3,7 +3,7 @@ module CoordinatesHelper
   def price(coord)
     if all_coordinates?(coord)
       show_price(coord)
-      price_info = JSON.parse((show_price(coordinate)).body)
+      price_info = JSON.parse((show_price(coord)).body)
       estimated_price = price_info['prices'][0]['estimate']
       return estimated_price
     end

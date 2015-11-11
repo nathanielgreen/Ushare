@@ -3,14 +3,12 @@ class CoordinatesController < ApplicationController
 
   def create
     hash = JSON.parse(request.body.read)
-    lat = hash['lat'].to_s
-    long = hash['long'].to_s
-    lat_end = hash['lat_end'].to_s
-    long_end = hash['long_end'].to_s
     session = Session.find_by_auth_key(hash['auth_key'])
+    hash.delete('auth_key')
     if session
+    hash[:session_id] = session.id
     user = User.find(session.user_id)
-      coordinate = Coordinate.create(lat: lat,long: long, session_id: session.id, user_id: user.id, long_end: long_end, lat_end: lat_end)
+    coordinate = Coordinate.create(hash)
       if coordinate
         render json: Coordinate.all, status: 201
       else
@@ -29,8 +27,7 @@ class CoordinatesController < ApplicationController
       coordinate = Coordinate.find_by_session_id("#{session.id}")
       hash.delete('auth_key')
       if coordinate.update_attributes(hash)
-        price(coordinate)
-        coordinate.update_attribute(:estimated_price, estimated_price)
+        coordinate.update_attribute(:estimated_price, price(coordinate))
         render json: Coordinate.all, status: 201
       else
         render json: {messages: "coordinate not updated" }, status: :unauthorized
