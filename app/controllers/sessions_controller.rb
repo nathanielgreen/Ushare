@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     log_in(JSON.parse(request.body.read))
   end
 
-  def destroy
+  def logout
     log_out(JSON.parse(request.body.read))
   end
 

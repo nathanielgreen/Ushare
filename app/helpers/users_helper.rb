@@ -1,7 +1,7 @@
 module UsersHelper
 
   def create_user(hash)
-    user = User.new(email:(hash['email']),name:(hash['name']),password:(hash['password']),password_confirmation:(hash['password_confirmation']))
+    user = User.new(email:(hash['email']),name:(hash['name']),password:(hash['password']),password_confirmation:(hash['password_confirmation']), username:(hash['username']))
     if user.save
       session = Session.create(user_id:(user.id), auth_key:(SecureRandom.hex))
       render json: {auth_key: session.auth_key, user_id: user.id, username: user.username}, status: 201

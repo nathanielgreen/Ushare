@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109164638) do
+ActiveRecord::Schema.define(version: 20151111140310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151109164638) do
     t.string   "long_end"
     t.integer  "session_id"
     t.string   "estimated_price"
+    t.string   "username"
   end
 
   add_index "coordinates", ["session_id"], name: "index_coordinates_on_session_id", using: :btree
