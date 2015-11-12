@@ -4,7 +4,7 @@
   <h3 class="btn btn-primary" id="new-msg" style="margin-bottom:20px;"> New Message </h3>
 
   <div ng-controller="messageBoardCtrl as messageList" style="color:white;">
-    <form id="new-msg-box" class="list-group-item" ng-controller="sendInviteCtrl as submit" 
+    <form id="new-msg-box" class="list-group-item" ng-controller="sendInviteCtrl as submit"
         ng-submit="submit.submitInvite(inviteBody, recipient);"
         style="color:black;">
       <input ng-model="inviteBody" type="text"
@@ -12,7 +12,7 @@
         style="color:black;" />
       <input ng-model="recipient" type="text"
         name="recipient" placeholder="username">
-      <input type="submit" value="Submit" />
+      <input id="message-submit" type="submit"  value="Submit" />
     </form>
 
     <div ng-repeat="message in messageList.messages">
