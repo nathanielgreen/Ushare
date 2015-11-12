@@ -7,17 +7,17 @@
 <body ng-app="uberShare-app">
   <div class="container">
     <h1>Ushare.</h1>
-        <div id="navigation" ng-controller="UserAccess" ng-show="userSignedIn">    
-          <div class="toggle">
-            <div class="toggleline"></div>
+        <div id="navigation" ng-controller="UserAccess" ng-show="userSignedIn">
+          <div class="toggle" id="toggle">
+            <div  class="toggleline"></div>
             <div class="toggleline"></div>
             <div class="toggleline"></div>
           </div>
-          <div class="menu">
+          <div class="menu" id="menu" >
             <ul>
-              <li><button ui-sref="profile">Share your ride</button></li>
+              <li><button id="share-ride" ui-sref="profile">Share your ride</button></li>
               <li><button ui-sref="userUniqueProfile">Profile</button></li>
-              <li><button ui-sref="userMessages">Messages</button></li>
+              <li><button id="messages" value="message" ui-sref="userMessages" text="messages" >Messages</button></li>
             </ul>
           </div>
         </div>
