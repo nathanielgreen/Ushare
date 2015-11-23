@@ -40,7 +40,7 @@ people an quick and easy way to reduce the cost of their travel.
 
 ## Contributors
 
-Nathaniel Green: https://github.com/nathanielgreen/
-Kyle MacPherson: https://github.com/KyleMacPherson/
-Harry Dix: https://github.com/harryandrew 
-Zhivko Siderov: https://github.com/zsid
+- Nathaniel Green: https://github.com/nathanielgreen/
+- Kyle MacPherson: https://github.com/KyleMacPherson/
+- Harry Dix: https://github.com/harryandrew 
+- Zhivko Siderov: https://github.com/zsid
