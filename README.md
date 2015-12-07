@@ -1,8 +1,8 @@
 # Ushare
 
 Ushare is an Android & iOS app that matches users based on their current
-geolocation and their destination, to find others around them whom with which
-they can share an Uber Cab with. This functionality provides users with a way to
+geolocation and their destination, to find others around them with whom they 
+can share an Uber Cab with. This functionality provides users with a way to
 split the fare of an Uber Cab with other users when their friends or colleges
 may not be available. The process of using Ushare is fast and simple, providing
 people an quick and easy way to reduce the cost of their travel.
